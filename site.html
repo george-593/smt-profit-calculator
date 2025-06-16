@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--Created by Maydex-->
+<!--Modified and hosted by George (https://github.com/george-593)-->
+<!--Original Steam Guide (https://steamcommunity.com/sharedfiles/filedetails/?id=3354157533)-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>🛒SMT Max Profit Calculator💸</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #2e3136;
+			}
+			.container {
+				background-color: white;
+				padding: 20px;
+
+				border-radius: 10px;
+				box-shadow: 0 15px 15px -2px black;
+				border: 8px;
+				border-radius: 25px;
+				width: 40%;
+				height: 40%;
+				margin: auto;
+			}
+			.sub-container {
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				width: 50%;
+				margin: auto;
+			}
+			.text-center {
+				text-align: center;
+			}
+			input {
+				padding: 10px;
+				font-size: 16px;
+				margin-right: 10px;
+				outline: none;
+			}
+			input:focus {
+				border: 2px solid #007bff;
+				box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+			}
+			button {
+				padding: 10px;
+				font-size: 16px;
+			}
+			p {
+				margin-top: 20px;
+				font-size: 18px;
+			}
+			.result {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+			.formula {
+				color: grey;
+				font-size: 14px;
+			}
+			.title {
+				background-color: red;
+				color: white;
+				font-weight: bold;
+				padding: 1px;
+				width: 45%;
+				text-align: center;
+				margin: auto;
+				font-size: 40px;
+			}
+
+			@media only screen and (max-width: 1200px) {
+				.container {
+					width: 80%;
+				}
+				.title {
+					width: 90%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="text-center">
+				<h1 class="title">SUPERMARKET TOGETHER</h1>
+				<h1 style="color: green">🤑 MAX PROFIT$ 🤑</h1>
+			</div>
+			<div class="sub-container">
+				<div>
+					<input
+						type="number"
+						id="inputNumber"
+						placeholder="Product market price"
+					/>
+					<button onclick="calculate()">Calculate</button>
+				</div>
+				<p id="result"></p>
+			</div>
+		</div>
+
+		<script>
+			const input = document.getElementById("inputNumber");
+			const resultElem = document.getElementById("result");
+
+			function calculate() {
+				const inputNumber = parseFloat(input.value);
+
+				if (isNaN(inputNumber)) {
+					input.value = "";
+					resultElem.innerText = "Please enter a valid number.";
+					return;
+				}
+				const result = inputNumber * 2 - 0.01;
+				const formula = `${inputNumber} * 2 - 0.01`;
+				resultElem.innerHTML = `Result: <span class="result">${result.toFixed(
+					2
+				)}</span><br><span class="formula">(${formula})</span>`;
+			}
+
+			input.addEventListener("input", function () {
+				calculate();
+			});
+
+			window.addEventListener("focus", function () {
+				input.focus();
+				input.select();
+			});
+		</script>
+	</body>
+</html>
